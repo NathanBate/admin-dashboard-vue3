@@ -7,31 +7,69 @@
           <slot name="identity-header">
             <div class="flex gap-4 items-center w-full h-full px-4">
               <div class="w-[40px] h-[40px]">
-                <LetsInnovateIcon class="rounded-full"/>
+                <slot name="brandIcon">
+                  <LetsInnovateIcon class="rounded-full"/>
+                </slot>
               </div>
-              <a class="block text-white font-bold" href="https://letsinnovate.io">Let's Innovate, LLC</a>
+              <slot name="brandName">
+                <a class="block text-white font-bold" href="https://letsinnovate.io">Let's Innovate, LLC</a>
+              </slot>
             </div>
           </slot>
         </div>
 
         <div class="flex flex-col w-full py-4">
-          <MenuItem :link-active="true" />
-          <MenuItem item-link="/customers">
-            <template v-slot:icon>
-              <CustomersIcon class="fill-white"/>
-            </template>
-            <template v-slot:label>
-              Customers
-            </template>
-          </MenuItem>
+          <slot name="menuItems">
+            <MenuItem :link-active="true" />
+            <MenuItem item-link="/customers">
+              <template v-slot:icon>
+                <CustomersIcon class="fill-white"/>
+              </template>
+              <template v-slot:label>
+                Customers
+              </template>
+            </MenuItem>
+            <MenuItem item-link="/customer/report" :top-level="false">
+              <template v-slot:label>
+                Sublink 1
+              </template>
+            </MenuItem>
+            <MenuItem item-link="/customer/report" :top-level="false" :link-active="true">
+              <template v-slot:label>
+                Sublink 2
+              </template>
+            </MenuItem>
+            <MenuItem item-link="/customer/report" :top-level="false">
+              <template v-slot:label>
+                Sublink 3
+              </template>
+            </MenuItem>
+          </slot>
         </div>
       </div>
 
-    <div class="block xl:hidden">
-      <div class="p-4 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
-        <div class="w-[40px] h-[40px]">
-          <MenuIcon class="fill-gray-400"/>
+    <div class="flex flex-col w-[100vw]">
+      <div class="flex justify-center h-[75px] bg-[#f3f7fc] globalHeaderBar">
+        <div class="block xl:hidden">
+          <div class="p-5 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
+            <div class="w-[40px] h-[40px]">
+              <MenuIcon class="fill-gray-400"/>
+            </div>
+          </div>
         </div>
+        <div class="flex-auto"></div>
+        <div class="flex items-center p-5 hover:bg-gray-200 mr-4">
+          <div class="w-[65px] h-[65px]">
+            <UserIcon class="rounded-full fill-gray-400"/>
+          </div>
+        </div>
+      </div>
+      <div>
+        <slot name="content">
+          <div class="p-8">
+            Content Here
+          </div>
+        </slot>
       </div>
     </div>
   </div>
@@ -41,6 +79,7 @@
 import IconLetsInnovate from '@/components/icons/IconLetsInnovate.vue';
 import IconCustomers from '@/components/icons/IconCustomers.vue';
 import IconMenu from '@/components/icons/IconMenu.vue';
+import IconUserProfile from '@/components/icons/IconUserProfile.vue';
 import MenuItem from '@/components/MenuItem.vue';
 
 export default {
@@ -49,6 +88,7 @@ export default {
     LetsInnovateIcon : IconLetsInnovate,
     CustomersIcon : IconCustomers,
     MenuIcon : IconMenu,
+    UserIcon : IconUserProfile,
     MenuItem : MenuItem
   },
   data() {
@@ -76,6 +116,9 @@ export default {
 .globalMenuContainer {
     @apply relative -left-[275px] xl:left-[0] w-[calc(100vw+275px)] xl:w-[100vw];
     transition: left 0.25s ease-out;
+}
+.globalHeaderBar {
+    @apply mb-6 shadow-xl shadow-gray-400/20;
 }
 
 </style>
