@@ -29,7 +29,7 @@
                 Customers
               </template>
             </MenuItem>
-            <MenuItem item-link="/customer/report" :top-level="false">
+            <MenuItem item-link="#" :top-level="false">
               <template v-slot:label>
                 Sublink 1
               </template>
@@ -106,15 +106,41 @@ export default {
         } else {
           globalMenuContainer.style.left = "0"
         }
+        console.log("Left is now " + computed.getPropertyValue(('left')))
       }
-    }
-  },
+    },
+  }, // methods
+  mounted() {
+
+    window.addEventListener('resize', ()=> {
+      let globalMenuContainer = this.$refs.globalMenuContainer
+      if (globalMenuContainer) {
+        if (window.innerWidth >= 1280) {
+          globalMenuContainer.style.left = "0"
+        } else {
+          globalMenuContainer.style.left = "-275px"
+        }
+      }
+    })
+
+    document.addEventListener('click', (event)=> {
+      let globalMenuContainer = this.$refs.globalMenuContainer
+      let globalMenu = this.$refs.globalMenu
+      let globalMenuComputed = window.getComputedStyle(globalMenuContainer)
+      let globalMenuLeft = globalMenuComputed.getPropertyValue('left')
+      let ww = window.innerWidth;
+      if (globalMenuLeft == '0px' && !globalMenu.contains(event.target) && ww < 1280) {
+        globalMenuContainer.style.left = "-275px";
+      }
+    })
+
+  }
 }
 </script>
 
 <style>
 .globalMenuContainer {
-    @apply relative -left-[275px] xl:left-[0] w-[calc(100vw+275px)] xl:w-[100vw];
+    @apply relative -left-[275px] w-[calc(100vw+275px)] xl:left-0 xl:w-[100vw];
     transition: left 0.25s ease-out;
 }
 .globalHeaderBar {
