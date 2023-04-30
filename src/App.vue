@@ -48,7 +48,7 @@
         </div>
       </div>
 
-    <div class="flex flex-col w-[100vw]">
+    <div class="flex flex-col w-[100vw] xl:w-[calc(100vw-275px)]">
       <div class="flex justify-center h-[75px] bg-[#f3f7fc] globalHeaderBar">
         <div class="block xl:hidden">
           <div class="p-5 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="flex-auto"></div>
-        <div class="flex items-center p-5 hover:bg-gray-200 mr-4">
+        <div class="flex items-center p-5 hover:bg-gray-200">
           <div class="w-[65px] h-[65px]">
             <UserIcon class="rounded-full fill-gray-400"/>
           </div>
