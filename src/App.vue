@@ -58,11 +58,25 @@
           </div>
         </div>
         <div class="flex-auto"></div>
-        <div class="flex items-center p-5 hover:bg-gray-200">
-          <div class="w-[65px] h-[65px]">
-            <UserIcon class="rounded-full fill-gray-400"/>
+        <div class="relative flex items-center w-[75px] h-[75px]">
+          <div class="hidden absolute top-[78px] right-0 bg-white shadow-xl shadow-gray-400/20" ref="userMenu">
+            <slot name="userMenuItems">
+              <a href="#">
+                <div class="block py-4 px-4 min-w-[2px] text-black hover:bg-[#f3f7fc]">noreply@letsinnovate.io</div>
+              </a>
+              <hr>
+              <a href="#">
+                <div class="block py-4 px-4 min-w-[2px] text-black hover:bg-[#f3f7fc]">Sign Out</div>
+              </a>
+            </slot>
+          </div>
+          <div class="w-[75px] h-[75px] p-[10px] hover:bg-gray-200" @click="toggleUserMenu" ref="userMenuButton">
+            <slot name="userIcon">
+              <UserIcon class="rounded-full fill-gray-400"/>
+            </slot>
           </div>
         </div>
+        <div class="w-5"></div>
       </div>
       <div>
         <slot name="content">
@@ -109,9 +123,20 @@ export default {
         console.log("Left is now " + computed.getPropertyValue(('left')))
       }
     },
+    toggleUserMenu() {
+      let userMenu = this.$refs.userMenu
+      if (userMenu) {
+        let computed = window.getComputedStyle(userMenu)
+        let display = computed.getPropertyValue("display")
+        if (display === "none") {
+          userMenu.style.display = "block"
+        } else {
+          userMenu.style.display = "none"
+        }
+      }
+    }
   }, // methods
   mounted() {
-
     window.addEventListener('resize', ()=> {
       let globalMenuContainer = this.$refs.globalMenuContainer
       if (globalMenuContainer) {
@@ -132,13 +157,21 @@ export default {
       if (globalMenuLeft == '0px' && !globalMenu.contains(event.target) && ww < 1280) {
         globalMenuContainer.style.left = "-275px";
       }
+
+      let userMenu = this.$refs.userMenu
+      let userMenuButton = this.$refs.userMenuButton
+      let userMenuComputed = window.getComputedStyle(userMenu)
+      let userMenuDisplay = userMenuComputed.getPropertyValue("display")
+      if (userMenuDisplay === "block" && !userMenu.contains(event.target) && !userMenuButton.contains(event.target)) {
+        userMenu.style.display = "none"
+      }
     })
 
   }
 }
 </script>
 
-<style>
+<style scoped>
 .globalMenuContainer {
     @apply relative -left-[275px] w-[calc(100vw+275px)] xl:left-0 xl:w-[100vw];
     transition: left 0.25s ease-out;
@@ -146,5 +179,4 @@ export default {
 .globalHeaderBar {
     @apply mb-6 shadow-xl shadow-gray-400/20;
 }
-
 </style>
