@@ -1,7 +1,7 @@
 <template>
-  <div class="flex">
-    <transition name="slide">
-      <div v-if="globalMenu" class="flex w-[275px] bg-[#29333d]  h-screen flex-col"
+  <div class="flex globalMenuContainer" ref="globalMenuContainer">
+
+      <div class="flex w-[275px] bg-[#29333d]  h-screen flex-col slide"
            ref="globalMenu">
         <div class="h-[75px] bg-gray-800 w-full">
           <slot name="identity-header">
@@ -26,18 +26,15 @@
           </MenuItem>
         </div>
       </div>
-    </transition>
 
     <div class="block xl:hidden">
-      <div class="p-4 hover:bg-gray-200 cursor-pointer" @click="toggleGlobalMenu">
-        <div class="w-[50px] h-[50px]">
+      <div class="p-4 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
+        <div class="w-[40px] h-[40px]">
           <MenuIcon class="fill-gray-400"/>
         </div>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -56,38 +53,29 @@ export default {
   },
   data() {
     return {
-      globalMenu: true,
     }
   },
   methods: {
     toggleGlobalMenu() {
-        if (this.globalMenu === false) {
-          this.globalMenu = true
+      let globalMenuContainer = this.$refs.globalMenuContainer
+      if (globalMenuContainer) {
+        let computed = window.getComputedStyle(globalMenuContainer)
+        let left = computed.getPropertyValue("left")
+        if (left === "0px") {
+          globalMenuContainer.style.left = "-275px"
         } else {
-          this.globalMenu = false;
+          globalMenuContainer.style.left = "0"
         }
+      }
     }
   },
-  created() {
-    if (window.innerWidth <= 1280) {
-      this.globalMenu = false;
-    }
-  }
 }
 </script>
 
 <style>
-.slide-enter-active,
-.slide-leave-active
-{
-    transition: transform 0.5s ease;
+.globalMenuContainer {
+    @apply relative -left-[275px] xl:left-[0] w-[calc(100vw+275px)] xl:w-[100vw];
+    transition: left 0.25s ease-out;
 }
-
-.slide-enter,
-.slide-leave-to {
-    transform: translateX(-100%);
-    transition: all 0.5s ease;
-}
-
 
 </style>
