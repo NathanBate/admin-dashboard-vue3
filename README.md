@@ -8,7 +8,7 @@ npm install @nathanbate/admin-dashboard
 
 ## Preview
 
-![Preview of the Admin Dashboard](./Admin-Dashboard-Preview.png)
+![Preview of the Admin Dashboard](https://github.com/NathanBate/admin-dashboard-vue3/blob/main/Admin-Dashboard-Preview.png)
 
 ## Use
 
