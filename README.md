@@ -6,14 +6,26 @@
 npm install @nathanbate/admin-dashboard
 ```
 
+## Preview
+
+![Preview of the Admin Dashboard](Admin-Dashboard-Preview.png)
+
 ## Use
 
 More details coming soon
 
+Make sure to include css somewhere:
+
+```javascript
+import '@nathanbate/admin-dashboard-vue/dist/assets/index.css'
+```
+
+Here is a basic vue component
+
 ```vue
 <template>
   <div>
-    <Dashboard>
+    <Dashboard :show-search="true" :show-user-menu="true">
       <template v-slot:brandIcon>
         <IconCustomers class="fill-white"/>
       </template>
@@ -61,6 +73,8 @@ export default {
   },
 }
 </script>
+
+
 
 
 ```

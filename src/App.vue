@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Dashboard>
+    <Dashboard :show-search="true" :show-user-menu="true">
       <template v-slot:brandIcon>
         <IconCustomers class="fill-white"/>
       </template>
