@@ -1,7 +1,6 @@
 {
-  "name": "admin-left-menu",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@nathanbate/admin-dashboard-vue",
+  "version": "1.0.3",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",

@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import IconDashboard from '@/components/icons/IconDashboard.vue';
+import IconDashboard from './icons/IconDashboard.vue';
+import '../assets/main.css';
 
 export default {
   name: "MenuItem",
