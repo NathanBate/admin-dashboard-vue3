@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .top-level {
       @apply flex gap-4 h-[36px] items-center pl-8 pr-4 py-8 hover:bg-gray-800;
   }

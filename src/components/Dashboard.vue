@@ -219,7 +219,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .globalMenuContainer {
     @apply relative -left-[275px] w-[calc(100vw+275px)] xl:left-0 xl:w-[100vw];
     transition: left 0.25s ease-out;
