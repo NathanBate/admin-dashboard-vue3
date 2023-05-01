@@ -1,40 +1,66 @@
-# admin-left-menu
+# Admin Dashboard Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+## Install
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```shell
+npm install @nathanbate/admin-dashboard
 ```
 
-### Compile and Hot-Reload for Development
+## Use
 
-```sh
-npm run dev
-```
+More details coming soon
 
-### Type-Check, Compile and Minify for Production
+```vue
+<template>
+  <div>
+    <Dashboard>
+      <template v-slot:brandIcon>
+        <IconCustomers class="fill-white"/>
+      </template>
+      <template v-slot:brandName>Test Business Name</template>
+      <template v-slot:menuItems>
+        <MenuItem item-link="/customers">
+          <template v-slot:icon>
+            <CustomersIcon class="fill-white"/>
+          </template>
+          <template v-slot:label>
+            Customers
+          </template>
+        </MenuItem>
+        <MenuItem item-link="#" :top-level="false">
+          <template v-slot:label>
+            Sublink 1
+          </template>
+        </MenuItem>
+        <MenuItem item-link="/customer/report" :top-level="false" :link-active="true">
+          <template v-slot:label>
+            Sublink 2
+          </template>
+        </MenuItem>
+        <MenuItem />
+      </template>
+    </Dashboard>
+  </div>
 
-```sh
-npm run build
+</template>
+
+<script>
+import Dashboard from '@/components/Dashboard.vue';
+import MenuItem from '@/components/MenuItem.vue';
+import IconCustomers from '@/components/icons/IconCustomers.vue';
+import CustomersIcon from '@/components/icons/IconCustomers.vue';
+
+export default {
+  name: "AdminDashboardDemoApp",
+  components: {
+    CustomersIcon,
+    IconCustomers,
+    Dashboard : Dashboard,
+    MenuItem : MenuItem,
+    CustomerTestIcon : IconCustomers,
+  },
+}
+</script>
+
+
 ```
