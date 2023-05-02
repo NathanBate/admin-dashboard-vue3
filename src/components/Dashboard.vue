@@ -1,17 +1,17 @@
 <template>
-  <div class="relative flex globalMenuContainer" ref="globalMenuContainer">
+  <div class="relative flex globalMenuContainer h-screen" ref="globalMenuContainer">
     <div class="flex w-[275px] bg-[#29333d]  h-screen flex-col slide"
          ref="globalMenu">
       <div class="h-[75px] bg-gray-800 w-full">
         <slot name="identity-header">
           <div class="flex gap-4 items-center w-full h-full px-4">
             <div class="w-[40px] h-[40px]">
-              <slot name="brandIcon">
+              <slot name="brandicon">
                 <LetsInnovateIcon class="rounded-full"/>
               </slot>
             </div>
             <div class="text-white font-bold">
-              <slot name="brandName">
+              <slot name="brandname">
                 <a class="block text-white font-bold" href="https://letsinnovate.io">Let's Innovate, LLC</a>
               </slot>
             </div>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="flex flex-col w-full py-4">
-        <slot name="menuItems">
+        <slot name="menuitems">
           <MenuItem :link-active="true" />
           <MenuItem item-link="/customers">
             <template v-slot:icon>
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col w-[100vw] xl:w-[calc(100vw-275px)]">
+    <div class="relative flex flex-col w-[100vw] xl:w-[calc(100vw-275px)] h-screen overflow-screen">
       <div class="flex justify-center h-[75px] bg-[#f3f7fc] globalHeaderBar">
         <div class="block xl:hidden">
           <div class="p-5 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
@@ -65,7 +65,7 @@
         </div>
         <div v-show="showUserMenu" class="relative flex items-center w-[75px] h-[75px]">
           <div class="hidden absolute top-[78px] right-0 bg-white shadow-xl shadow-gray-400/20" ref="userMenu">
-            <slot name="userMenuItems">
+            <slot name="usermenuitems">
               <a href="#">
                 <div class="block py-4 px-4 min-w-[2px] text-black hover:bg-[#f3f7fc]">noreply@letsinnovate.io</div>
               </a>
@@ -76,14 +76,14 @@
             </slot>
           </div>
           <div class="w-[75px] h-[75px] p-[10px] hover:bg-gray-200" @click="toggleUserMenu" ref="userMenuButton">
-            <slot name="userIcon">
+            <slot name="usericon">
               <UserIcon class="rounded-full fill-gray-400"/>
             </slot>
           </div>
         </div>
         <div class="w-5"></div>
       </div>
-      <div>
+      <div class="h-full overflow-scroll">
         <slot name="content">
           <div class="p-8">
             Content Here
@@ -95,10 +95,10 @@
     <div class="absolute top-0 left-0 w-screen h-screen hidden flex-col justify-center items-center z-80" ref="searchBoxContainer">
       <div class="absolute top-0 left-0 w-screen h-screen bg-black opacity-30 z-95"></div>
       <div class="relative text-black w-full sm:w-2/3 md:w-1/2 z-100 bg-white flex flex-col items-center" ref="searchBox">
-        <slot name="searchBar">
+        <slot name="searchbar">
           <div class="py-4">Search Bar</div>
         </slot>
-        <slot name="searchBar">
+        <slot name="searchresults">
           <div class="py-4">Search Results</div>
         </slot>
       </div>
