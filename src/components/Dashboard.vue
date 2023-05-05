@@ -1,7 +1,11 @@
 <template>
   <div class="relative flex globalMenuContainer h-screen" ref="globalMenuContainer">
+
+    <!-- Left Column: Brand Rectangle & Main Menu -->
     <div class="flex w-[275px] bg-[#29333d]  h-screen flex-col slide"
          ref="globalMenu">
+
+      <!-- Brand Rectangle -->
       <div class="h-[75px] bg-gray-800 w-full">
         <slot name="identity-header">
           <div class="flex gap-4 items-center w-full h-full px-4">
@@ -18,8 +22,9 @@
 
           </div>
         </slot>
-      </div>
+      </div><!-- Brand Rectangle -->
 
+      <!-- Menu Items -->
       <div class="flex flex-col w-full py-4">
         <slot name="menuitems">
           <MenuItem :link-active="true" />
@@ -47,18 +52,22 @@
             </template>
           </MenuItem>
         </slot>
-      </div>
-    </div>
+      </div><!-- Menu Items -->
+
+    </div><!-- Left Column: Brand Rectangle & Main Menu -->
 
     <div class="relative flex flex-col w-[100vw] xl:w-[calc(100vw-275px)] h-screen overflow-screen">
       <div class="flex justify-center h-[75px] bg-[#f3f7fc] globalHeaderBar">
-        <div class="block xl:hidden">
-          <div class="p-5 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu">
-            <div class="w-[40px] h-[40px]">
-              <MenuIcon class="fill-gray-400"/>
-            </div>
+
+        <!-- Hamburger menu -->
+        <div class="p-5 hover:bg-gray-200 bg-transparent cursor-pointer" @click="toggleGlobalMenu"
+          ref="hamburgerIcon">
+          <div class="w-[40px] h-[40px]">
+            <MenuIcon class="fill-gray-400"/>
           </div>
         </div>
+
+
         <div class="flex-auto"></div>
         <div v-show="showSearch" class="w-[75px] h-[75px] p-[10px] hover:bg-gray-200" ref="searchButton">
           <SearchIcon class="fill-gray-400"/>
@@ -166,15 +175,20 @@ export default {
         }
       }
     },
+
   }, // methods
   mounted() {
     window.addEventListener('resize', ()=> {
       let globalMenuContainer = this.$refs.globalMenuContainer
-      if (globalMenuContainer) {
+      let hamburger = this.$refs.hamburgerIcon
+
+      if (globalMenuContainer && hamburger) {
         if (window.innerWidth >= 1280) {
           globalMenuContainer.style.left = "0"
+          hamburger.style.display = "none"
         } else {
           globalMenuContainer.style.left = "-275px"
+          hamburger.style.display = "block"
         }
       }
     })
