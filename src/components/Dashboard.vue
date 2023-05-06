@@ -178,6 +178,12 @@ export default {
 
   }, // methods
   mounted() {
+    let globalMenuContainer = this.$refs.globalMenuContainer
+    let hamburger = this.$refs.hamburgerIcon
+    if (globalMenuContainer && hamburger) {
+      hamburger.style.display = "none"
+    }
+
     window.addEventListener('resize', ()=> {
       let globalMenuContainer = this.$refs.globalMenuContainer
       let hamburger = this.$refs.hamburgerIcon
