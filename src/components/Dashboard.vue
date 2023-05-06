@@ -180,14 +180,16 @@ export default {
   mounted() {
     let globalMenuContainer = this.$refs.globalMenuContainer
     let hamburger = this.$refs.hamburgerIcon
+
+    // Initial hamburger menu hide on page load
     if (globalMenuContainer && hamburger) {
-      hamburger.style.display = "none"
+      if (window.innerWidth >= 1280) {
+        hamburger.style.display = "none"
+      }
     }
 
+    // Show/Hide Menu when window is resized
     window.addEventListener('resize', ()=> {
-      let globalMenuContainer = this.$refs.globalMenuContainer
-      let hamburger = this.$refs.hamburgerIcon
-
       if (globalMenuContainer && hamburger) {
         if (window.innerWidth >= 1280) {
           globalMenuContainer.style.left = "0"
