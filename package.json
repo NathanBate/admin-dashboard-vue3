@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "changelog": "auto-changelog --template changelog-template.hbs -p -u --commit-limit false",
+    "changelog": "auto-changelog --template changelog-template.hbs --commit-limit false",
     "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json"
   },
   "dependencies": {
