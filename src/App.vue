@@ -4,8 +4,9 @@
       <template v-slot:brandIcon>
         <IconCustomers class="fill-white"/>
       </template>
-      <template v-slot:brandName>Test Business Name</template>
-      <template v-slot:menuItems>
+      <template v-slot:brandname>Test Business Name</template>
+      <template v-slot:menuitems>
+
         <MenuItem item-link="/customers">
           <template v-slot:icon>
             <CustomersIcon class="fill-white"/>
@@ -14,16 +15,19 @@
             Customers
           </template>
         </MenuItem>
-        <MenuItem item-link="#" :top-level="false">
-          <template v-slot:label>
-            Sublink 1
-          </template>
-        </MenuItem>
-        <MenuItem item-link="/customer/report" :top-level="false" :link-active="true">
-          <template v-slot:label>
-            Sublink 2
-          </template>
-        </MenuItem>
+            <!-- Customers Sub Menu -->
+            <MenuItem item-link="#" :top-level="false" :parent-active="true">
+              <template v-slot:label>
+                Sublink 1
+              </template>
+            </MenuItem>
+            <MenuItem item-link="/customer/report" :top-level="false" :link-active="true" :parent-active="true">
+              <template v-slot:label>
+                Sublink 2
+              </template>
+            </MenuItem>
+
+        <!-- Shows Dashboard menu item by default -->
         <MenuItem />
       </template>
       <template v-slot:content>
