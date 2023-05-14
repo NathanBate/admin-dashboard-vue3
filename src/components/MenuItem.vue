@@ -1,5 +1,5 @@
 <template>
-  <a :href="itemLink">
+  <a v-show="(parentActive && !topLevel) || (topLevel)" :href="itemLink">
     <div :class="{ 'bg-[#41474D]': linkActive, 'top-level': topLevel, 'second-level': !topLevel}">
       <div v-show="topLevel" class="w-[22px] h-[22px]">
         <slot name="icon">
@@ -36,6 +36,10 @@ export default {
     topLevel: {
       type: Boolean,
       default: true
+    },
+    parentActive: {
+      type: Boolean,
+      default: false
     }
   }
 }
