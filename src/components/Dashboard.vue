@@ -204,36 +204,44 @@ export default {
     document.addEventListener('click', (event) => {
       //let globalMenuContainer = this.$refs.globalMenuContainer
       let globalMenu = this.$refs.globalMenu
-      let globalMenuComputed = window.getComputedStyle(globalMenuContainer)
-      let globalMenuLeft = globalMenuComputed.getPropertyValue('left')
-      let ww = window.innerWidth;
-      if (globalMenuLeft == '0px' && !globalMenu.contains(event.target) && ww < 1280) {
-        globalMenuContainer.style.left = "-275px";
-      }
+      if (globalMenuContainer) {
+        let globalMenuComputed = window.getComputedStyle(globalMenuContainer)
+        let globalMenuLeft = globalMenuComputed.getPropertyValue('left')
+        let ww = window.innerWidth;
+        if (globalMenuLeft == '0px' && !globalMenu.contains(event.target) && ww < 1280) {
+          globalMenuContainer.style.left = "-275px";
+        }
 
-      let userMenu = this.$refs.userMenu
-      let userMenuButton = this.$refs.userMenuButton
-      let userMenuComputed = window.getComputedStyle(userMenu)
-      let userMenuDisplay = userMenuComputed.getPropertyValue("display")
-      if (userMenuDisplay === "block" && !userMenu.contains(event.target) && !userMenuButton.contains(event.target)) {
-        userMenu.style.display = "none"
-      }
+        let userMenu = this.$refs.userMenu
+        let userMenuButton = this.$refs.userMenuButton
+        if (userMenu && userMenuButton) {
+          let userMenuComputed = window.getComputedStyle(userMenu)
+          let userMenuDisplay = userMenuComputed.getPropertyValue("display")
+          if (userMenuDisplay === "block" && !userMenu.contains(event.target) && !userMenuButton.contains(event.target)) {
+            userMenu.style.display = "none"
+          }
 
-      let searchBox = this.$refs.searchBox
-      let searchBoxContainer = this.$refs.searchBoxContainer;
-      let searchBoxContainerComputed = window.getComputedStyle(searchBoxContainer)
-      let searchBoxContainerDisplay = searchBoxContainerComputed.getPropertyValue('display')
+        }
 
-      let searchButton = this.$refs.searchButton;
+        let searchBox = this.$refs.searchBox
+        let searchBoxContainer = this.$refs.searchBoxContainer;
+        if (searchBox && searchBoxContainer) {
+          let searchBoxContainerComputed = window.getComputedStyle(searchBoxContainer)
+          let searchBoxContainerDisplay = searchBoxContainerComputed.getPropertyValue('display')
+          let searchButton = this.$refs.searchButton;
+          if (searchButton) {
+            let searchBarComputed = window.getComputedStyle(searchBox)
+            let searchBarDisplay = searchBarComputed.getPropertyValue("display")
+            if (searchBoxContainerDisplay == "flex" && !searchBox.contains(event.target) && !searchButton.contains(event.target)) {
+              searchBoxContainer.style.display = "none";
+            }
+            if (searchBoxContainerDisplay == "none" && searchButton.contains(event.target)) {
+              searchBoxContainer.style.display = "flex";
+            }
+          }
+        }
 
-      let searchBarComputed = window.getComputedStyle(searchBox)
-      let searchBarDisplay = searchBarComputed.getPropertyValue("display")
 
-      if (searchBoxContainerDisplay == "flex" && !searchBox.contains(event.target) && !searchButton.contains(event.target)) {
-        searchBoxContainer.style.display = "none";
-      }
-      if (searchBoxContainerDisplay == "none" && searchButton.contains(event.target)) {
-        searchBoxContainer.style.display = "flex";
       }
     })
 
