@@ -1,3 +1,12 @@
+# 1.3.6
+[2023-05-14]
+
+### Fixes
+
+* Fix: Add Node Resolve ([`7cf0d1a`](https://github.com/NathanBate/dashboard-menu-left/commit/7cf0d1aff59404e7750cae20a7a5ccf3396eea78))
+* Fix: Add file extensions ([`0405296`](https://github.com/NathanBate/dashboard-menu-left/commit/0405296f20fd06bb85576870094254b2e70e6b1b))
+* Fix: Make slot names lower case ([`5f63559`](https://github.com/NathanBate/dashboard-menu-left/commit/5f6355921071b709954624fcad4823d55e8d1acb))
+
 # 1.3.1
 [2023-05-14]
 
