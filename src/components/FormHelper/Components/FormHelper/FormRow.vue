@@ -7,14 +7,14 @@
 
 		<div v-if="columns===2" class="flex flex-col sm:flex-row gap-2 sm:gap-6 py-2 sm:py-4">
 
-			<slot name="leftCell" class="w-full sm:w-1/2 sm:py-0"/>
+			<slot name="leftcell" class="w-full sm:w-1/2 sm:py-0"/>
 
             <slot name="spacer">
                 <div class="sm:w-1/8"/>
                 <div class="sm:w-1/8"/>
             </slot>
 
-			<slot name="rightCell" class="w-full sm:w-1/2 sm:py-0"/>
+			<slot name="rightcell" class="w-full sm:w-1/2 sm:py-0"/>
 
 		</div>
 
