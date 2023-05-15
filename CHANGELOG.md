@@ -1,3 +1,11 @@
+# 1.4.1
+[2023-05-15]
+
+### Fixes
+
+* Fix: comment out duplicated variable declare ([`b73a30b`](https://github.com/NathanBate/dashboard-menu-left/commit/b73a30bc805280c15eeb2770bca5c07caa36ccfc))
+* Fix: rename folder with inertia files ([`5de71ca`](https://github.com/NathanBate/dashboard-menu-left/commit/5de71ca4b20fbbcc47e1d15f5d34c1450c3a5cff))
+
 # 1.4.0
 [2023-05-15]
 
