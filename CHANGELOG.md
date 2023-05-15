@@ -1,3 +1,10 @@
+# 1.4.0
+[2023-05-15]
+
+### Features
+
+* Feature: Add Inertia Flash Messages ([`da69187`](https://github.com/NathanBate/dashboard-menu-left/commit/da69187bd245fac51d11488eb9ac8c6cc73a8613))
+
 # 1.3.6
 [2023-05-14]
 
