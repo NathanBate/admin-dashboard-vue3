@@ -201,8 +201,8 @@ export default {
       }
     })
 
-    document.addEventListener('click', (event)=> {
-      let globalMenuContainer = this.$refs.globalMenuContainer
+    document.addEventListener('click', (event) => {
+      //let globalMenuContainer = this.$refs.globalMenuContainer
       let globalMenu = this.$refs.globalMenu
       let globalMenuComputed = window.getComputedStyle(globalMenuContainer)
       let globalMenuLeft = globalMenuComputed.getPropertyValue('left')
