@@ -99,6 +99,7 @@ import Dashboard from '@/components/Dashboard.vue';
 import MenuItem from '@/components/MenuItem.vue';
 import IconCustomers from '@/components/icons/IconCustomers.vue';
 import CustomersIcon from '@/components/icons/IconCustomers.vue';
+import { FormLayout, Row } from './components/FormHelper/Components/FormHelper'
 
 export default {
   name: "AdminDashboardDemoApp",
@@ -108,6 +109,7 @@ export default {
     Dashboard : Dashboard,
     MenuItem : MenuItem,
     CustomerTestIcon : IconCustomers,
+    FormLayout,
   },
 }
 </script>

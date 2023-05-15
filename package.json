@@ -11,6 +11,7 @@
     "changelog-debug": "auto-changelog --template changelog-template.hbs -p --template json --output changelog-data.json"
   },
   "dependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "vue": "^3.2.47"
   },
   "devDependencies": {
