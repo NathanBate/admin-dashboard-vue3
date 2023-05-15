@@ -1,6 +1,6 @@
 {
   "name": "@nathanbate/admin-dashboard-vue",
-  "version": "1.3.1",
+  "version": "1.3.6",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
