@@ -1,3 +1,10 @@
+# 1.3.1
+[2023-05-14]
+
+### Fixes
+
+* Fix: Add loading button vue component ([`de248c8`](https://github.com/NathanBate/dashboard-menu-left/commit/de248c8497d7277f1edff2abe935233f4cef10b2))
+
 # 1.3.0
 [2023-05-14]
 
