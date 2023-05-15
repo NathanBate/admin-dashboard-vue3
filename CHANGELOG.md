@@ -1,3 +1,10 @@
+# 1.4.3
+[2023-05-15]
+
+### Fixes
+
+* Fix: Add conditionals to click handler for inertia ([`54d5c96`](https://github.com/NathanBate/dashboard-menu-left/commit/54d5c9621489cf87f365cdfec98ed31f6c06cc93))
+
 # 1.4.1
 [2023-05-15]
 
