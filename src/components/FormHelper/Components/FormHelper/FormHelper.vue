@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import LoadingButton from '@/Components/InertiaComponents/LoadingButton'
+import LoadingButton from '../LoadingButton.vue'
 
 export default {
 	components: {
