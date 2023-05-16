@@ -27,6 +27,12 @@
 
 <script>
 export default {
+  props: {
+    delay: {
+      required: false,
+      default: 5000
+    }
+  },
   data() {
     return {
       show: true,
@@ -38,7 +44,7 @@ export default {
         this.show = true
         setTimeout(()=> {
           this.timeoutMethod()
-        }, 15000)
+        }, this.delay)
       },
       deep: true,
     },
@@ -57,7 +63,7 @@ export default {
   mounted() {
     setTimeout(()=> {
       this.timeoutMethod()
-    }, 15000)
+    }, this.delay)
   }
 }
 </script>
